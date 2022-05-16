@@ -56,6 +56,12 @@ describe('User cheese and Board models',() =>{
 
              const ab = await uAbraham.getBoards() 
              expect(ab.length).toBe(3)  
+
+
+             let usBoard = await User.findAll({
+                include: Board
+            })
+            console.log('ABRHAMA*********', usBoard)
              
              console.log(uAbraham.toJSON())
                                     
@@ -84,21 +90,21 @@ describe('User cheese and Board models',() =>{
         const boardSix = await board6.getCheeses()
         const boardSeven = await board7.getCheeses()
 
+        let boChes = await Board.findAll({
+            include: Cheese
+        })
+        console.log('*********', boChes)
+
         expect(boardSix.length).toBe(2)
         expect(boardSeven.length).toBe(2)
         console.log(boardSix.toJSON)
 
-        // const someboard = await Board.findByPk(2)
-        // await someboard.addCheese(2)
-    //  board6.findAll(cheese1)
+       
                                     
     }) 
-    // test('', async() =>{
-    //     const users = await Board.findAll({
-    //         include: { model: Cheese, as: 'White Fuzzy Rind' }
-         
-    //     })
+    
+   
     })
 
-// })
+
 
