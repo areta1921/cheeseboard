@@ -26,7 +26,7 @@ describe('User cheese and Board models',() =>{
             expect(myBoard.rating).toBe(4)
             console.log(myBoard.toJSON())
     })
-    test('', async() =>{
+    test('create Cheese model', async() =>{
             const myCheese =await Cheese.create({title: 'cheese',
                                                 description: 'cheese is sweet'
                                                 })
@@ -36,8 +36,28 @@ describe('User cheese and Board models',() =>{
            console.log(myCheese.toJSON())                              
     })
      
-    test('Multiple Boards can be added to a User', async() =>{
-         
+    test('user can have many boards', async() =>{
+         const uAbraham = await User.create({name: 'ayle', email: 'absho1921@gmail.com'})
+
+         board1 = await Board.create({type: 'french',
+                                      description: 'hard type of board',
+                                      rating: 5})
+         board2 = await Board.create({type: 'ethiopian',
+                                    description: 'hard type of board',
+                                    rating: 3.7})  
+        board3 = await Board.create({type: 'nigerian',
+                                    description: 'hard type of board',
+                                    rating: 2.2})   
+                                    
+                                    
+             await uAbraham.addBoard(board1)
+             await uAbraham.addBoard(board2)    
+             await uAbraham.addBoard(board3)   
+             const ab = await uAbraham.getBoards() 
+             expect(ab.length).toBe(3)  
+             
+             console.log(uAbraham.toJSON())
+                                    
     })
     test('board to many cheese and cheese to be many board  ', async() =>{
 
