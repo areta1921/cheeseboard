@@ -6,6 +6,9 @@ Board.belongsTo(User)
 User.hasMany(Board)
 
 
+Board.belongsToMany(Cheese,{through: 'Cheeseab'})
+Cheese.belongsToMany(Board,{through: 'Cheeseab'})
+
 
 
 
