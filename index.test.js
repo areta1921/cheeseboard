@@ -62,11 +62,11 @@ describe('User cheese and Board models',() =>{
     })
     test('board to many cheese and cheese to be many board  ', async() =>{
         const board6 = await Board.create({type: 'italian',
-                                          description: 'made of italy',
-                                        rating: 4.2})
+                                            description: 'made of italy',
+                                            rating: 4.2})
         const board7 = await Board.create({type: 'franch',
-                                         description: 'made of franch',
-                                         rating: 4.6})     
+                                            description: 'made of franch',
+                                            rating: 4.6})     
         const cheese1 = await Cheese.create({title: 'AGED FRESH',
                                             description: 'White Fuzzy Rind'})  
         const cheese2 = await Cheese.create({title: 'SEMI-SOFT',
@@ -86,13 +86,19 @@ describe('User cheese and Board models',() =>{
 
         expect(boardSix.length).toBe(2)
         expect(boardSeven.length).toBe(2)
-       console.log(boardSeven)
+        console.log(boardSix.toJSON)
 
         // const someboard = await Board.findByPk(2)
         // await someboard.addCheese(2)
-                                         
+    //  board6.findAll(cheese1)
+                                    
+    }) 
+    // test('', async() =>{
+    //     const users = await Board.findAll({
+    //         include: { model: Cheese, as: 'White Fuzzy Rind' }
+         
+    //     })
     })
-    
 
-})
+// })
 
